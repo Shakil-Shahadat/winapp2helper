@@ -93,6 +93,12 @@
 			finalText += '\nDetectOS=' + '|' + osname;
 		}
 
+		// Get Section Name
+		if ( document.querySelector( '.section' ).value !== 'None' )
+		{
+			finalText += '\nLangSecRef=' + document.querySelector( '.section' ).value;
+		}
+
 		document.querySelector( '.finalEntry' ).innerHTML = finalText;
 	}
 
