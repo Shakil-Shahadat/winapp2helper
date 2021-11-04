@@ -14,8 +14,27 @@
 	</div>
 
 	<div>
+		Operating System Mode
+		<select class="osMode" onchange="enableOS()">
+			<option>None</option>
+			<option>Strict</option>
+			<option>Minimum</option>
+			<option>Maximum</option>
+		</select>
+	</div>
+
+	<div>
 		Operating System
-		<input type="text" class="osName">
+		<select class="osName" disabled>
+			<option value="5.0">Windows 2000</option>
+			<option value="5.1">Windows XP</option>
+			<option value="5.2">Windows XP 64-Bit Edition, Windows Server 2003, Windows Home Server</option>
+			<option value="6.0">Windows Vista, Windows Server 2008</option>
+			<option value="6.1">Windows 7, Windows Server 2008 R2, Windows Home Server 2011</option>
+			<option value="6.2">Windows 8, Windows Server 2012</option>
+			<option value="6.3">Windows 8.1, Windows Server 2012 R2</option>
+			<option value="10.0">Windows 10, Windows Server 2016, Windows Server 2019</option>
+		</select>
 	</div>
 
 	<button onclick="createEntry()">Create</button><br>
@@ -32,12 +51,24 @@
 	{
 		let finalText = '[' + document.querySelector( '.entryName' ).value + ' *]';
 
-		if ( document.querySelector( '.osName' ).value !== '' )
+		if ( document.querySelector( '.osMode' ).value !== 'None' )
 		{
 			finalText += '\nDetectOS=' + document.querySelector( '.osName' ).value;
 		}
 
 		document.querySelector( '.finalEntry' ).innerHTML = finalText;
+	}
+
+	function enableOS()
+	{
+		if ( document.querySelector( '.osMode' ).value === 'None' )
+		{
+			document.querySelector( '.osName' ).setAttribute( 'disabled', 'disabled' );
+		}
+		else
+		{
+			document.querySelector( '.osName' ).removeAttribute( 'disabled' );
+		}
 	}
 </script>
 
