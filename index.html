@@ -51,9 +51,20 @@
 	{
 		let finalText = '[' + document.querySelector( '.entryName' ).value + ' *]';
 
-		if ( document.querySelector( '.osMode' ).value !== 'None' )
+		let osmode = document.querySelector( '.osMode' ).value;
+		let osname = document.querySelector( '.osName' ).value;
+
+		if ( osmode === 'Strict' )
 		{
-			finalText += '\nDetectOS=' + document.querySelector( '.osName' ).value;
+			finalText += '\nDetectOS=' + osname	+ '|' + osname;
+		}
+		else if ( osmode === 'Minimum' )
+		{
+			finalText += '\nDetectOS=' + osname	+ '|';
+		}
+		else if ( osmode === 'Maximum' )
+		{
+			finalText += '\nDetectOS=' + '|' + osname;
 		}
 
 		document.querySelector( '.finalEntry' ).innerHTML = finalText;
