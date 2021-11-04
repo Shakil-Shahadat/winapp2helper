@@ -31,6 +31,12 @@
 	function createEntry()
 	{
 		let finalText = '[' + document.querySelector( '.entryName' ).value + ' *]';
+
+		if ( document.querySelector( '.osName' ).value !== '' )
+		{
+			finalText += '\nDetectOS=' + document.querySelector( '.osName' ).value;
+		}
+
 		document.querySelector( '.finalEntry' ).innerHTML = finalText;
 	}
 </script>
