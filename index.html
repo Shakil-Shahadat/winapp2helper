@@ -106,15 +106,15 @@
 		let osmode = document.querySelector( '.osMode' ).value;
 		let osname = document.querySelector( '.osName' ).value;
 
-		if ( osmode === 'Strict' )
+		if ( osmode === 'Strict OS' )
 		{
 			finalText += '\nDetectOS=' + osname	+ '|' + osname;
 		}
-		else if ( osmode === 'Minimum' )
+		else if ( osmode === 'Minimum OS' )
 		{
 			finalText += '\nDetectOS=' + osname	+ '|';
 		}
-		else if ( osmode === 'Maximum' )
+		else if ( osmode === 'Maximum OS' )
 		{
 			finalText += '\nDetectOS=' + '|' + osname;
 		}
