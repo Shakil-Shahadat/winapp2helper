@@ -189,6 +189,18 @@
 			}
 		}
 
+		// Registry Keys for Removal
+		if ( document.querySelector( '.registryKeyRemovals' ).value !== '' )
+		{
+			let registryKeyRemovalsParts = document.querySelector( '.registryKeyRemovals' ).value.split( '\n' );
+			for( i in registryKeyRemovalsParts )
+			{
+				finalText += '\nRegKey';
+				finalText += parseInt( i ) + 1;
+				finalText += '=' + registryKeyRemovalsParts[ i ];
+			}
+		}
+
 		document.querySelector( '.finalEntry' ).innerHTML = finalText;
 	} // createEntry()
 
