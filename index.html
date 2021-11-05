@@ -104,6 +104,26 @@
 			finalText += '\nLangSecRef=' + document.querySelector( '.section' ).value;
 		}
 
+		// Get Registry Entry Detection
+		if ( document.querySelector( '.registryDetect' ).value !== '' )
+		{
+			// See if detect is multi-line
+			let regDetectParts = document.querySelector( '.registryDetect' ).value.split( '\n' );
+			if ( regDetectParts.length > 1 )
+			{
+				for( i in regDetectParts )
+				{
+					finalText += '\nDetect';
+					finalText += parseInt( i ) + 1;
+					finalText += '=' + regDetectParts[ i ];
+				}
+			}
+			else
+			{
+				finalText += '\nDetect=' + regDetectParts;
+			}
+		}
+
 		document.querySelector( '.finalEntry' ).innerHTML = finalText;
 	}
 
