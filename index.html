@@ -173,6 +173,18 @@
 			finalText += '\nWarning=' + document.querySelector( '.warning' ).value;
 		}
 
+		// File / Folder for Removal
+		if ( document.querySelector( '.fileFolderRemovals' ).value !== '' )
+		{
+			let fileFolderRemovalsParts = document.querySelector( '.fileFolderRemovals' ).value.split( '\n' );
+			for( i in fileFolderRemovalsParts )
+			{
+				finalText += '\nFileKey';
+				finalText += parseInt( i ) + 1;
+				finalText += '=' + fileFolderRemovalsParts[ i ];
+			}
+		}
+
 		document.querySelector( '.finalEntry' ).innerHTML = finalText;
 	} // createEntry()
 
