@@ -6,3 +6,4 @@ Feature:
  ☐ Keep the Create button disabled until all mandatory fields are filled @created(21-11-04 09:04)
  ☐ Make it a replacement of winapp2 documentation @created(21-11-05 09:16)
  ☐ Error if name is empty @created(21-11-05 09:25)
+ ☐ Error if both detect and detectfile are empty @created(21-11-05 09:25)
