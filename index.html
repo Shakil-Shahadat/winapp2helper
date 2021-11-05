@@ -132,7 +132,7 @@
 		// File / Folder Detection
 		if ( document.querySelector( '.fileFolderDetect' ).value !== '' )
 		{
-			// See if detect is multi-line
+			// See if DetectFile is multi-line
 			let fileFolderDetectParts = document.querySelector( '.fileFolderDetect' ).value.split( '\n' );
 			if ( fileFolderDetectParts.length > 1 )
 			{
@@ -150,7 +150,7 @@
 		}
 
 		document.querySelector( '.finalEntry' ).innerHTML = finalText;
-	}
+	} // createEntry()
 
 	function enableOS()
 	{
