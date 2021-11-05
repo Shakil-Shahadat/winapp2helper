@@ -162,6 +162,12 @@
 			}
 		}
 
+		// Get Warning Message
+		if ( document.querySelector( '.warning' ).value !== '' )
+		{
+			finalText += '\nWarning=' + document.querySelector( '.warning' ).value;
+		}
+
 		document.querySelector( '.finalEntry' ).innerHTML = finalText;
 	} // createEntry()
 
