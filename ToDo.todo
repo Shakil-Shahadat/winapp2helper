@@ -8,3 +8,4 @@ Feature:
  ☐ Error if name is empty @created(21-11-05 09:25)
  ☐ Error if both detect and detectfile are empty @created(21-11-05 09:25)
  ☐ Error if both FileKey and RegKey are empty @created(21-11-05 09:25)
+ ☐ Copy to clipboard button @created(21-11-06 02:25)
