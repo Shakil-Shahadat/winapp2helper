@@ -129,6 +129,26 @@
 			}
 		}
 
+		// File / Folder Detection
+		if ( document.querySelector( '.fileFolderDetect' ).value !== '' )
+		{
+			// See if detect is multi-line
+			let fileFolderDetectParts = document.querySelector( '.fileFolderDetect' ).value.split( '\n' );
+			if ( fileFolderDetectParts.length > 1 )
+			{
+				for( i in fileFolderDetectParts )
+				{
+					finalText += '\nDetectFile';
+					finalText += parseInt( i ) + 1;
+					finalText += '=' + fileFolderDetectParts[ i ];
+				}
+			}
+			else
+			{
+				finalText += '\nDetectFile=' + fileFolderDetectParts;
+			}
+		}
+
 		document.querySelector( '.finalEntry' ).innerHTML = finalText;
 	}
 
