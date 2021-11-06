@@ -204,6 +204,16 @@
 			finalText += '\nWarning=' + document.querySelector( '.warning' ).value;
 		}
 
+		// Show error if both 'Files / Folders to Remove' &
+		// 'Registry Keys to Remove' are empty
+		if ( document.querySelector( '.fileFolderRemovals' ).value === '' && document.querySelector( '.registryKeyRemovals' ).value === '' )
+		{
+			alert( "Please provide at least one of 'Files / Folders to Remove' "
+					+ "and 'Registry Keys to Remove'." );
+			document.querySelector( '.fileFolderRemovals' ).focus();
+			return;
+		}
+
 		// File / Folder for Removal
 		if ( document.querySelector( '.fileFolderRemovals' ).value !== '' )
 		{
