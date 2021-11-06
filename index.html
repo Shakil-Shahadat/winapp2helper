@@ -111,8 +111,19 @@
 <script>
 	function createEntry()
 	{
+		let finalText = '';
+
 		// Get Entry Name
-		let finalText = '[' + document.querySelector( '.entryName' ).value + ' *]';
+		if ( document.querySelector( '.entryName' ).value === '' )
+		{
+			alert( 'Please provide the name of the software.' );
+			document.querySelector( '.entryName' ).focus();
+			return;
+		}
+		else
+		{
+			finalText += '[' + document.querySelector( '.entryName' ).value + ' *]';
+		}
 
 		// Get OS Selection
 		let osmode = document.querySelector( '.osMode' ).value;
