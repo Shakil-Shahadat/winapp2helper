@@ -148,6 +148,16 @@
 			finalText += '\nLangSecRef=' + document.querySelector( '.section' ).value;
 		}
 
+		// Show error if both 'Registry Keys to Detect' &
+		// 'Files / Folders to Detect' are empty
+		if ( document.querySelector( '.registryDetect' ).value === '' && document.querySelector( '.fileFolderDetect' ).value === '' )
+		{
+			alert( "Please provide at least one of 'Registry Keys to Detect' "
+					+ "and 'Files / Folders to Detect'." );
+			document.querySelector( '.registryDetect' ).focus();
+			return;
+		}
+
 		// Get Registry Entry Detection
 		if ( document.querySelector( '.registryDetect' ).value !== '' )
 		{
