@@ -233,6 +233,12 @@
 			document.querySelector( '.osName' ).removeAttribute( 'disabled' );
 		}
 	}
+
+	function copy2Clipboard()
+	{
+		document.querySelector( '.finalEntry' ).select();
+		navigator.clipboard.writeText( document.querySelector( '.finalEntry' ).value );
+	}
 </script>
 
 </body>
