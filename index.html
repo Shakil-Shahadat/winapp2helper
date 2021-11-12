@@ -74,7 +74,7 @@
 	</div>
 
 	<div>
-		Registry Keys to Detect<br>
+		<span onclick="toggleMe( 'registryDetect' )">Registry Keys to Detect</span><br>
 		<textarea class="registryDetect" cols="90" rows="3" spellcheck="false"></textarea>
 	</div>
 
@@ -272,6 +272,19 @@
 	{
 		document.querySelector( '.finalEntry' ).select();
 		navigator.clipboard.writeText( document.querySelector( '.finalEntry' ).value );
+	}
+
+	function toggleMe( targetClass )
+	{
+		let ele = document.querySelector( '.' + targetClass );
+		if ( ele.style.display === '' )
+		{
+			ele.style.display = 'none';
+		}
+		else
+		{
+			ele.style.display = '';
+		}
 	}
 </script>
 
