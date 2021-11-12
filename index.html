@@ -20,12 +20,12 @@
 <body>
 
 <main>
-	<div>
+	<p>
 		Entry Name *
 		<input type="text" class="entryName" spellcheck="false" autofocus>
-	</div>
+	</p>
 
-	<div>
+	<p>
 		OS Selection Mode
 		<select class="osMode" onchange="enableOS()">
 			<option>None</option>
@@ -33,9 +33,9 @@
 			<option>Minimum OS</option>
 			<option>Maximum OS</option>
 		</select>
-	</div>
+	</p>
 
-	<div>
+	<p>
 		Operating System
 		<select class="osName" disabled>
 			<option value="5.0">Windows 2000</option>
@@ -47,9 +47,9 @@
 			<option value="6.3">Windows 8.1, Windows Server 2012 R2</option>
 			<option value="10.0">Windows 10, Windows Server 2016, Windows Server 2019</option>
 		</select>
-	</div>
+	</p>
 
-	<div>
+	<p>
 		Section
 		<select class="section">
 			<option>None</option>
@@ -71,41 +71,43 @@
 			<option value="3033">Vivaldi</option>
 			<option value="3034">Brave</option>
 		</select>
-	</div>
+	</p>
 
 	<div>
-		<span onclick="toggleMe( 'registryDetect' )">Registry Keys to Detect</span><br>
+		<p onclick="toggleMe( 'registryDetect' )">Registry Keys to Detect</p>
 		<textarea class="registryDetect" cols="90" rows="3" spellcheck="false"></textarea>
 	</div>
 
 	<div>
-		Files / Folders to Detect<br>
+		<p onclick="toggleMe( 'fileFolderDetect' )">Files / Folders to Detect</p>
 		<textarea class="fileFolderDetect" cols="90" rows="3" spellcheck="false"></textarea>
 	</div>
 
 	<div>
-		Warning<br>
+		<p onclick="toggleMe( 'warning' )">Warning</p>
 		<textarea class="warning" cols="90" rows="2"></textarea>
 	</div>
 
 	<div>
-		Files / Folders to Remove<br>
+		<p onclick="toggleMe( 'fileFolderRemovals' )">Files / Folders to Remove</p>
 		<textarea class="fileFolderRemovals" cols="90" rows="5" spellcheck="false"></textarea>
 	</div>
 
 	<div>
-		Registry Keys to Remove<br>
+		<p onclick="toggleMe( 'registryKeyRemovals' )">Registry Keys to Remove</p>
 		<textarea class="registryKeyRemovals" cols="90" rows="5" spellcheck="false"></textarea>
 	</div>
 
 	<div>
-		Exclude Keys<br>
+		<p onclick="toggleMe( 'excludeKeys' )">Exclude Keys</p>
 		<textarea class="excludeKeys" cols="90" rows="3" spellcheck="false"></textarea>
 	</div>
 
 	<div>
-		<button onclick="createEntry()">Create Final Entry</button>
-		<button onclick="copy2Clipboard()">Copy</button>
+		<p>
+			<button onclick="createEntry()">Create Final Entry</button>
+			<button onclick="copy2Clipboard()">Copy</button>
+		</p>
 		<textarea class="finalEntry" cols="90" rows="10" spellcheck="false"></textarea>
 	</div>
 </main>
