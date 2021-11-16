@@ -70,6 +70,8 @@
 			<option value="3032">CCleaner Browser</option>
 			<option value="3033">Vivaldi</option>
 			<option value="3034">Brave</option>
+			<option>Language Files</option>
+			<option>License Text Files</option>
 		</select>
 	</p>
 
@@ -148,9 +150,17 @@
 		}
 
 		// Get Section Name
-		if ( document.querySelector( '.section' ).value !== 'None' )
+		let sectionName = document.querySelector( '.section' ).value;
+		if ( sectionName !== 'None' )
 		{
-			finalText += '\nLangSecRef=' + document.querySelector( '.section' ).value;
+			if ( sectionName === 'Language Files' || sectionName === 'License Text Files' )
+			{
+				finalText += '\nSection=' + document.querySelector( '.section' ).value;
+			}
+			else
+			{
+				finalText += '\nLangSecRef=' + document.querySelector( '.section' ).value;
+			}
 		}
 
 		// Show error if both 'Registry Keys to Detect' &
