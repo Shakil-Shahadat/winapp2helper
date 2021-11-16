@@ -194,12 +194,12 @@
 				{
 					finalText += '\nDetectFile';
 					finalText += parseInt( i ) + 1;
-					finalText += '=' + fileFolderDetectParts[ i ];
+					finalText += '=' + replaceEnvVar ( fileFolderDetectParts[ i ] );
 				}
 			}
 			else
 			{
-				finalText += '\nDetectFile=' + fileFolderDetectParts;
+				finalText += '\nDetectFile=' + replaceEnvVar ( fileFolderDetectParts[ 0 ] );
 			}
 		}
 
@@ -227,7 +227,7 @@
 			{
 				finalText += '\nFileKey';
 				finalText += parseInt( i ) + 1;
-				finalText += '=' + fileFolderRemovalsParts[ i ];
+				finalText += '=' + replaceEnvVar ( fileFolderRemovalsParts[ i ] );
 			}
 		}
 
@@ -257,6 +257,36 @@
 
 		document.querySelector( '.finalEntry' ).innerHTML = finalText;
 	} // createEntry()
+
+	// Replace paths with environment variables
+	function replaceEnvVar( txt )
+	{
+		let paths =
+		[
+			'C:\\Program Files\\Common Files',
+			'C:\\Program Files (x86)',
+			'C:\\Program Files',
+			'C:\\ProgramData',
+			'C:\\Users\\Public',
+			'C:\\Windows',
+			'C:'
+		];
+		let envVar =
+		[
+			'%CommonProgramFiles%',
+			'%ProgramFiles%',
+			'%ProgramFiles%',
+			'%CommonAppData%',
+			'%Public%',
+			'%WinDir%',
+			'%SystemDrive%'
+		];
+		for ( i in paths )
+		{
+			txt = txt.replace( paths[ i ], envVar[ i ] );
+		}
+		return txt;
+	}
 
 	function enableOS()
 	{
