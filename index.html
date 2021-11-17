@@ -314,6 +314,7 @@
 		return txt;
 	}
 
+	// Enable / disable OS selection drop down
 	function enableOS()
 	{
 		if ( document.querySelector( '.osMode' ).value === 'None' )
@@ -326,11 +327,13 @@
 		}
 	}
 
+	// Copy entry to clipboard
 	function copy2Clipboard()
 	{
 		navigator.clipboard.writeText( document.querySelector( '.finalEntry' ).value );
 	}
 
+	// Toggle visibility of fields on click on related field name
 	function toggleMe( targetClass )
 	{
 		let ele = document.querySelector( '.' + targetClass );
