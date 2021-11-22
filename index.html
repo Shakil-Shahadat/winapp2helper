@@ -125,7 +125,7 @@
 	<div>
 		<p>
 			<button onclick="createEntry()">Create Final Entry</button>
-			<button onclick="copy2Clipboard()">Copy</button>
+			<button onclick="copy2Clipboard()" class="copyButton">Copy</button>
 		</p>
 		<textarea class="finalEntry" cols="90" rows="10" spellcheck="false"></textarea>
 	</div>
@@ -348,6 +348,8 @@
 	function copy2Clipboard()
 	{
 		navigator.clipboard.writeText( document.querySelector( '.finalEntry' ).value );
+		document.querySelector( '.copyButton' ).innerText = '✔️ Copied!';
+		setTimeout( function(){document.querySelector( '.copyButton' ).innerText = 'Copy';}, 3000 );
 	}
 
 	// Toggle visibility of fields on click on related field name
