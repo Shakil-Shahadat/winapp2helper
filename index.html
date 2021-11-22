@@ -283,12 +283,19 @@
 		}
 
 		let finalEntry = document.querySelector( '.finalEntry' );
+
+		// Add the final entry to final entry text box
 		finalEntry.innerHTML = finalText;
+
+		// Enlarge final entry text box
 		finalEntry.style.height = 'auto';
 		finalEntry.style.height = finalEntry.scrollHeight + 'px';
+
+		// Visual feedback for 'Create Entry' button
 		document.querySelector( '.createButton' ).innerText = '🎉 Created!';
 		setTimeout( function(){ document.querySelector( '.createButton' ).innerText = 'Create Entry'; }, 3000 );
-	} // createEntry()
+	}
+	// createEntry() ends
 
 	// Replace paths with environment variables
 	function replaceEnvVar( txt )
@@ -335,6 +342,7 @@
 		}
 		return txt;
 	}
+	// replaceEnvVar() ends
 
 	// Enable / disable OS selection drop down
 	function enableOS()
