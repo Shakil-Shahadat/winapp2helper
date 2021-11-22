@@ -286,7 +286,7 @@
 		document.querySelector( '.finalEntry' ).style.height = 'auto';
 		document.querySelector( '.finalEntry' ).style.height = document.querySelector( '.finalEntry' ).scrollHeight + 'px';
 		document.querySelector( '.createButton' ).innerText = '🎉 Created!';
-		setTimeout( function(){document.querySelector( '.createButton' ).innerText = 'Create Entry';}, 3000 );
+		setTimeout( function(){ document.querySelector( '.createButton' ).innerText = 'Create Entry'; }, 3000 );
 	} // createEntry()
 
 	// Replace paths with environment variables
@@ -353,7 +353,7 @@
 	{
 		navigator.clipboard.writeText( document.querySelector( '.finalEntry' ).value );
 		document.querySelector( '.copyButton' ).innerText = '✔️ Copied!';
-		setTimeout( function(){document.querySelector( '.copyButton' ).innerText = 'Copy';}, 3000 );
+		setTimeout( function(){ document.querySelector( '.copyButton' ).innerText = 'Copy'; }, 3000 );
 	}
 
 	// Toggle visibility of fields on click on related field name
