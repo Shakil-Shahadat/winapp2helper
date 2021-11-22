@@ -124,7 +124,7 @@
 
 	<div>
 		<p>
-			<button onclick="createEntry()">Create Final Entry</button>
+			<button onclick="createEntry()" class="createButton">Create Entry</button>
 			<button onclick="copy2Clipboard()" class="copyButton">Copy</button>
 		</p>
 		<textarea class="finalEntry" cols="90" rows="10" spellcheck="false"></textarea>
@@ -283,6 +283,8 @@
 		}
 
 		document.querySelector( '.finalEntry' ).innerHTML = finalText;
+		document.querySelector( '.createButton' ).innerText = '🎉 Created!';
+		setTimeout( function(){document.querySelector( '.createButton' ).innerText = 'Create Entry';}, 3000 );
 	} // createEntry()
 
 	// Replace paths with environment variables
