@@ -367,6 +367,20 @@
 			ele.style.display = '';
 		}
 	}
+
+	// Text Area Auto Grow Script
+	for ( e of document.querySelectorAll( 'textarea' ) )
+	{
+		for ( s of [ 'keyup', 'keydown', 'change', 'cut', 'paste', 'drop' ] )
+		{
+			e.addEventListener( s, resizeTextarea );
+		}
+	}
+	function resizeTextarea()
+	{
+		this.style.height = 'auto';
+		this.style.height = this.scrollHeight + 'px';
+	}
 </script>
 
 </body>
