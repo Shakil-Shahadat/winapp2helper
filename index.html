@@ -282,9 +282,10 @@
 			}
 		}
 
-		document.querySelector( '.finalEntry' ).innerHTML = finalText;
-		document.querySelector( '.finalEntry' ).style.height = 'auto';
-		document.querySelector( '.finalEntry' ).style.height = document.querySelector( '.finalEntry' ).scrollHeight + 'px';
+		let finalEntry = document.querySelector( '.finalEntry' );
+		finalEntry.innerHTML = finalText;
+		finalEntry.style.height = 'auto';
+		finalEntry.style.height = finalEntry.scrollHeight + 'px';
 		document.querySelector( '.createButton' ).innerText = '🎉 Created!';
 		setTimeout( function(){ document.querySelector( '.createButton' ).innerText = 'Create Entry'; }, 3000 );
 	} // createEntry()
