@@ -32,9 +32,9 @@
 		OS Selection Mode
 		<select class="osMode" onchange="enableOS()">
 			<option>None</option>
-			<option>Strict OS</option>
-			<option>Minimum OS</option>
-			<option>Maximum OS</option>
+			<option>Strict OS Version</option>
+			<option>Minimum OS Version</option>
+			<option>Maximum OS Version</option>
 		</select>
 	</p>
 
@@ -153,15 +153,15 @@
 		let osmode = document.querySelector( '.osMode' ).value;
 		let osname = document.querySelector( '.osName' ).value;
 
-		if ( osmode === 'Strict OS' )
+		if ( osmode === 'Strict OS Version' )
 		{
 			finalText += '\nDetectOS=' + osname	+ '|' + osname;
 		}
-		else if ( osmode === 'Minimum OS' )
+		else if ( osmode === 'Minimum OS Version' )
 		{
 			finalText += '\nDetectOS=' + osname	+ '|';
 		}
-		else if ( osmode === 'Maximum OS' )
+		else if ( osmode === 'Maximum OS Version' )
 		{
 			finalText += '\nDetectOS=' + '|' + osname;
 		}
