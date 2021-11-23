@@ -1,3 +1,4 @@
+// A function to create final entry
 function createEntry()
 {
 	let finalText = '';
