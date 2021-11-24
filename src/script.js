@@ -67,12 +67,12 @@ function createEntry()
 			{
 				finalText += '\nDetect';
 				finalText += parseInt( i ) + 1;
-				finalText += '=' + regDetectParts[ i ];
+				finalText += '=' + replaceRegFolders( regDetectParts[ i ] );
 			}
 		}
 		else
 		{
-			finalText += '\nDetect=' + regDetectParts;
+			finalText += '\nDetect=' + replaceRegFolders( regDetectParts[ 0 ] );
 		}
 	}
 
@@ -132,7 +132,7 @@ function createEntry()
 		{
 			finalText += '\nRegKey';
 			finalText += parseInt( i ) + 1;
-			finalText += '=' + registryKeyRemovalsParts[ i ];
+			finalText += '=' + replaceRegFolders( registryKeyRemovalsParts[ i ] );
 		}
 	}
 
