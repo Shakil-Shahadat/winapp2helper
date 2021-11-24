@@ -163,6 +163,33 @@ function createEntry()
 }
 // createEntry() ends
 
+// Replace registry folders with shortcuts
+function replaceRegFolders( txt )
+{
+	let folders =
+	[
+		'HKEY_CLASSES_ROOT',
+		'HKEY_CURRENT_USER',
+		'HKEY_LOCAL_MACHINE',
+		'HKEY_USERS',
+		'HKEY_CURRENT_CONFIG'
+	];
+	let shorts =
+	[
+		'HKCR',
+		'HKCU',
+		'HKLM',
+		'HKU',
+		'HKCC'
+	];
+	for ( i in folders )
+	{
+		txt = txt.replace( folders[ i ], shorts[ i ] );
+	}
+	return txt;
+}
+// replaceRegFolders() ends
+
 // Replace paths with environment variables
 function replaceEnvVar( txt )
 {
