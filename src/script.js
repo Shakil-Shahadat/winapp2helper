@@ -83,6 +83,7 @@ function createEntry()
 		let fileFolderDetectParts = document.querySelector( '.fileFolderDetect' ).value.split( '\n' );
 		if ( fileFolderDetectParts.length > 1 )
 		{
+			fileFolderDetectParts.sort();
 			for( i in fileFolderDetectParts )
 			{
 				finalText += '\nDetectFile';
