@@ -63,6 +63,7 @@ function createEntry()
 		let regDetectParts = document.querySelector( '.registryDetect' ).value.split( '\n' );
 		if ( regDetectParts.length > 1 )
 		{
+			regDetectParts.sort();
 			for( i in regDetectParts )
 			{
 				finalText += '\nDetect';
@@ -117,6 +118,7 @@ function createEntry()
 	if ( document.querySelector( '.fileFolderRemovals' ).value !== '' )
 	{
 		let fileFolderRemovalsParts = document.querySelector( '.fileFolderRemovals' ).value.split( '\n' );
+		fileFolderRemovalsParts.sort();
 		for( i in fileFolderRemovalsParts )
 		{
 			finalText += '\nFileKey';
@@ -129,6 +131,7 @@ function createEntry()
 	if ( document.querySelector( '.registryKeyRemovals' ).value !== '' )
 	{
 		let registryKeyRemovalsParts = document.querySelector( '.registryKeyRemovals' ).value.split( '\n' );
+		registryKeyRemovalsParts.sort();
 		for( i in registryKeyRemovalsParts )
 		{
 			finalText += '\nRegKey';
@@ -141,6 +144,7 @@ function createEntry()
 	if ( document.querySelector( '.excludeKeys' ).value !== '' )
 	{
 		let excludeKeysParts = document.querySelector( '.excludeKeys' ).value.split( '\n' );
+		excludeKeysParts.sort();
 		for( i in excludeKeysParts )
 		{
 			finalText += '\nExcludeKey';
