@@ -290,3 +290,160 @@ function resizeTextarea()
 	this.style.height = 'auto';
 	this.style.height = this.scrollHeight + 'px';
 }
+
+// A function to add an existing entry for editing
+function addEntry()
+{
+	// Get the entry
+	let entry = prompt( 'Enter an existing entry to edit.' );
+
+	// Add the entry to final entry text box
+	let entryBox = document.querySelector( '.finalEntry' );
+	entryBox.innerHTML = entry;
+
+	// Enlarge final entry text box
+	entryBox.style.height = 'auto';
+	entryBox.style.height = entryBox.scrollHeight + 'px';
+
+	// Split the entry into lines
+	let entryParts = entry.split( '\r\n' );
+
+	// Set entry name
+	document.querySelector( '.entryName' ).value = entryParts[ 0 ].replace( '[', '' ).replace( ' *]', '' );
+
+	// Loop over lines to add them in respective section
+	for ( let i = 1; i < entryParts.length; i++ )
+	{
+		// Set OS Selection Mode & OS
+		if ( /^DetectOS=/.test( entryParts[ i ] ) )
+		{
+			let matchedPart = entryParts[ i ].match( /^DetectOS=/ );
+			let otherPart = entryParts[ i ].replace( matchedPart, '' );
+			if ( /^\|/.test( otherPart ) )
+			{
+				document.querySelector( '.osMode' ).value = 'Maximum OS Version';
+				document.querySelector( '.osName' ).value = otherPart.replace( '|', '' );
+			}
+			else if ( /\|$/.test( otherPart ) )
+			{
+				document.querySelector( '.osMode' ).value = 'Minimum OS Version';
+				document.querySelector( '.osName' ).value = otherPart.replace( '|', '' );
+			}
+			else
+			{
+				document.querySelector( '.osMode' ).value = 'Strict OS Version';
+				document.querySelector( '.osName' ).value = otherPart.split( '|' )[ 0 ];
+			}
+			document.querySelector( '.osName' ).removeAttribute( 'disabled' );
+		}
+
+		// Set Section
+		else if ( /^LangSecRef=/.test( entryParts[ i ] ) )
+		{
+			let matchedPart = entryParts[ i ].match( /^LangSecRef=/ );
+			let otherPart = entryParts[ i ].replace( matchedPart, '' );
+			document.querySelector( '.section' ).value = otherPart;
+		}
+		// Section can be defined in two ways
+		else if ( /^Section=/.test( entryParts[ i ] ) )
+		{
+			let matchedPart = entryParts[ i ].match( /^Section=/ );
+			let otherPart = entryParts[ i ].replace( matchedPart, '' );
+			document.querySelector( '.section' ).value = otherPart;
+		}
+
+		// Set Registry Detection Entries
+		else if ( /^Detect\d*=/.test( entryParts[ i ] ) )
+		{
+			let matchedPart = entryParts[ i ].match( /^Detect\d*=/ );
+			if ( document.querySelector( '.registryDetect' ).value === '' )
+			{
+				document.querySelector( '.registryDetect' ).value = entryParts[ i ].replace( matchedPart, '' );
+			}
+			else
+			{
+				document.querySelector( '.registryDetect' ).value += '\n' + entryParts[ i ].replace( matchedPart, '' );
+			}
+			document.querySelector( '.registryDetect' ).style.height = 'auto';
+			document.querySelector( '.registryDetect' ).style.height = document.querySelector( '.registryDetect' ).scrollHeight + 'px';
+		}
+
+		// Set File Detection Entries
+		else if ( /^DetectFile\d*=/.test( entryParts[ i ] ) )
+		{
+			let matchedPart = entryParts[ i ].match( /^DetectFile\d*=/ );
+			if ( document.querySelector( '.fileFolderDetect' ).value === '' )
+			{
+				document.querySelector( '.fileFolderDetect' ).value = entryParts[ i ].replace( matchedPart, '' );
+			}
+			else
+			{
+				document.querySelector( '.fileFolderDetect' ).value += '\n' + entryParts[ i ].replace( matchedPart, '' );
+			}
+			document.querySelector( '.fileFolderDetect' ).style.height = 'auto';
+			document.querySelector( '.fileFolderDetect' ).style.height = document.querySelector( '.fileFolderDetect' ).scrollHeight + 'px';
+		}
+
+		// Set warning message
+		else if ( /^Warning=/.test( entryParts[ i ] ) )
+		{
+			let matchedPart = entryParts[ i ].match( /^Warning=/ );
+			if ( document.querySelector( '.warning' ).value === '' )
+			{
+				document.querySelector( '.warning' ).value = entryParts[ i ].replace( matchedPart, '' );
+			}
+			else
+			{
+				document.querySelector( '.warning' ).value += '\n' + entryParts[ i ].replace( matchedPart, '' );
+			}
+		}
+
+		// Set file removal parts
+		else if ( /^FileKey\d*=/.test( entryParts[ i ] ) )
+		{
+			let matchedPart = entryParts[ i ].match( /^FileKey\d*=/ );
+			if ( document.querySelector( '.fileFolderRemovals' ).value === '' )
+			{
+				document.querySelector( '.fileFolderRemovals' ).value = entryParts[ i ].replace( matchedPart, '' );
+			}
+			else
+			{
+				document.querySelector( '.fileFolderRemovals' ).value += '\n' + entryParts[ i ].replace( matchedPart, '' );
+			}
+			document.querySelector( '.fileFolderRemovals' ).style.height = 'auto';
+			document.querySelector( '.fileFolderRemovals' ).style.height = document.querySelector( '.fileFolderRemovals' ).scrollHeight + 'px';
+		}
+
+		// Set registry removal parts
+		else if ( /^RegKey\d*=/.test( entryParts[ i ] ) )
+		{
+			let matchedPart = entryParts[ i ].match( /^RegKey\d*=/ );
+			if ( document.querySelector( '.registryKeyRemovals' ).value === '' )
+			{
+				document.querySelector( '.registryKeyRemovals' ).value = entryParts[ i ].replace( matchedPart, '' );
+			}
+			else
+			{
+				document.querySelector( '.registryKeyRemovals' ).value += '\n' + entryParts[ i ].replace( matchedPart, '' );
+			}
+			document.querySelector( '.registryKeyRemovals' ).style.height = 'auto';
+			document.querySelector( '.registryKeyRemovals' ).style.height = document.querySelector( '.registryKeyRemovals' ).scrollHeight + 'px';
+		}
+
+		// Set exclude key parts
+		else if ( /^ExcludeKey\d*=/.test( entryParts[ i ] ) )
+		{
+			let matchedPart = entryParts[ i ].match( /^ExcludeKey\d*=/ );
+			if ( document.querySelector( '.excludeKeys' ).value === '' )
+			{
+				document.querySelector( '.excludeKeys' ).value = entryParts[ i ].replace( matchedPart, '' );
+			}
+			else
+			{
+				document.querySelector( '.excludeKeys' ).value += '\n' + entryParts[ i ].replace( matchedPart, '' );
+			}
+			document.querySelector( '.excludeKeys' ).style.height = 'auto';
+			document.querySelector( '.excludeKeys' ).style.height = document.querySelector( '.excludeKeys' ).scrollHeight + 'px';
+		}
+	}
+}
