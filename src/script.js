@@ -36,7 +36,7 @@ function createEntry()
 	let sectionName = document.querySelector( '.section' ).value;
 	if ( sectionName !== 'None' )
 	{
-		if ( sectionName === 'Language Files' || sectionName.startsWith( 'Dangerous ' ) )
+		if ( sectionName === 'Games' || sectionName === 'Language Files' || sectionName.startsWith( 'Dangerous ' ) )
 		{
 			finalText += '\nSection=' + document.querySelector( '.section' ).value;
 		}
