@@ -299,6 +299,9 @@ function addEntry()
 	// Get the entry
 	let entry = prompt( 'Enter an existing entry to edit.' );
 
+	// Exit function if prompt is cancelled
+	if ( entry === null ) return;
+
 	// Add the entry to final entry text box
 	let entryBox = document.querySelector( '.finalEntry' );
 	entryBox.innerHTML = entry;
