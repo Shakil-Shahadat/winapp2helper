@@ -160,7 +160,8 @@ function createEntry()
 
 	// Enlarge final entry text box
 	finalEntry.style.height = 'auto';
-	finalEntry.style.height = finalEntry.scrollHeight + 'px';
+	let newHeight = finalEntry.scrollHeight + 2;
+	finalEntry.style.height = newHeight + 'px';
 
 	// Visual feedback for 'Create Entry' button
 	document.querySelector( '.createButton' ).innerText = '🎉 Created!';
@@ -288,7 +289,8 @@ for ( e of document.querySelectorAll( 'textarea' ) )
 function resizeTextarea()
 {
 	this.style.height = 'auto';
-	this.style.height = this.scrollHeight + 'px';
+	let newHeight = this.scrollHeight + 2;
+	this.style.height = newHeight + 'px';
 }
 
 // A function to add an existing entry for editing
@@ -303,7 +305,8 @@ function addEntry()
 
 	// Enlarge final entry text box
 	entryBox.style.height = 'auto';
-	entryBox.style.height = entryBox.scrollHeight + 'px';
+	let newHeight = entryBox.scrollHeight + 2;
+	entryBox.style.height = newHeight + 'px';
 
 	// Split the entry into lines
 	let entryParts = entry.split( '\r\n' );
@@ -365,7 +368,8 @@ function addEntry()
 				document.querySelector( '.registryDetect' ).value += '\n' + entryParts[ i ].replace( matchedPart, '' );
 			}
 			document.querySelector( '.registryDetect' ).style.height = 'auto';
-			document.querySelector( '.registryDetect' ).style.height = document.querySelector( '.registryDetect' ).scrollHeight + 'px';
+			let newHeight = document.querySelector( '.registryDetect' ).scrollHeight + 2;
+			document.querySelector( '.registryDetect' ).style.height = newHeight + 'px';
 		}
 
 		// Set File Detection Entries
@@ -381,7 +385,8 @@ function addEntry()
 				document.querySelector( '.fileFolderDetect' ).value += '\n' + entryParts[ i ].replace( matchedPart, '' );
 			}
 			document.querySelector( '.fileFolderDetect' ).style.height = 'auto';
-			document.querySelector( '.fileFolderDetect' ).style.height = document.querySelector( '.fileFolderDetect' ).scrollHeight + 'px';
+			let newHeight = document.querySelector( '.fileFolderDetect' ).scrollHeight + 2;
+			document.querySelector( '.fileFolderDetect' ).style.height = newHeight + 'px';
 		}
 
 		// Set warning message
@@ -411,7 +416,8 @@ function addEntry()
 				document.querySelector( '.fileFolderRemovals' ).value += '\n' + entryParts[ i ].replace( matchedPart, '' );
 			}
 			document.querySelector( '.fileFolderRemovals' ).style.height = 'auto';
-			document.querySelector( '.fileFolderRemovals' ).style.height = document.querySelector( '.fileFolderRemovals' ).scrollHeight + 'px';
+			let newHeight = document.querySelector( '.fileFolderRemovals' ).scrollHeight + 2;
+			document.querySelector( '.fileFolderRemovals' ).style.height = newHeight + 'px';
 		}
 
 		// Set registry removal parts
@@ -427,7 +433,8 @@ function addEntry()
 				document.querySelector( '.registryKeyRemovals' ).value += '\n' + entryParts[ i ].replace( matchedPart, '' );
 			}
 			document.querySelector( '.registryKeyRemovals' ).style.height = 'auto';
-			document.querySelector( '.registryKeyRemovals' ).style.height = document.querySelector( '.registryKeyRemovals' ).scrollHeight + 'px';
+			let newHeight = document.querySelector( '.registryKeyRemovals' ).scrollHeight + 2;
+			document.querySelector( '.registryKeyRemovals' ).style.height = newHeight + 'px';
 		}
 
 		// Set exclude key parts
@@ -443,7 +450,8 @@ function addEntry()
 				document.querySelector( '.excludeKeys' ).value += '\n' + entryParts[ i ].replace( matchedPart, '' );
 			}
 			document.querySelector( '.excludeKeys' ).style.height = 'auto';
-			document.querySelector( '.excludeKeys' ).style.height = document.querySelector( '.excludeKeys' ).scrollHeight + 'px';
+			let newHeight = document.querySelector( '.excludeKeys' ).scrollHeight + 2;
+			document.querySelector( '.excludeKeys' ).style.height = newHeight + 'px';
 		}
 	}
 }
