@@ -149,7 +149,14 @@ function createEntry()
 		{
 			finalText += '\nExcludeKey';
 			finalText += parseInt( i ) + 1;
-			finalText += '=' + excludeKeysParts[ i ];
+			if ( /^REG/.test( excludeKeysParts[ i ] ) )
+			{
+				finalText += '=' + replaceRegFolders ( excludeKeysParts[ i ] );
+			}
+			else
+			{
+				finalText += '=' + replaceEnvVar ( excludeKeysParts[ i ] );
+			}
 		}
 	}
 
