@@ -255,11 +255,11 @@ function enableOS()
 {
 	if ( document.querySelector( '.osMode' ).value === 'None' )
 	{
-		document.querySelector( '.osName' ).setAttribute( 'disabled', 'disabled' );
+		document.querySelector( '.osName' ).parentNode.style.display = 'none';
 	}
 	else
 	{
-		document.querySelector( '.osName' ).removeAttribute( 'disabled' );
+		document.querySelector( '.osName' ).parentNode.style.display = 'block';
 	}
 }
 
