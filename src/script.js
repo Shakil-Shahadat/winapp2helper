@@ -271,20 +271,6 @@ function copy2Clipboard()
 	setTimeout( function(){ document.querySelector( '.copyButton' ).innerText = 'Copy'; }, 3000 );
 }
 
-// Toggle visibility of fields on click on related field name
-function toggleMe( targetClass )
-{
-	let ele = document.querySelector( '.' + targetClass );
-	if ( ele.style.display === '' )
-	{
-		ele.style.display = 'none';
-	}
-	else
-	{
-		ele.style.display = '';
-	}
-}
-
 // Text Area Auto Grow Script
 for ( e of document.querySelectorAll( 'textarea' ) )
 {
