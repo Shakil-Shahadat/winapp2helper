@@ -295,15 +295,6 @@ function addEntry()
 	// Exit function if prompt is cancelled
 	if ( entry === null ) return;
 
-	// Add the entry to final entry text box
-	let entryBox = document.querySelector( '.finalEntry' );
-	entryBox.innerHTML = entry;
-
-	// Enlarge final entry text box
-	entryBox.style.height = 'auto';
-	let newHeight = entryBox.scrollHeight + 2;
-	entryBox.style.height = newHeight + 'px';
-
 	// Split the entry into lines
 	let entryParts = entry.split( '\r\n' );
 
@@ -450,4 +441,7 @@ function addEntry()
 			document.querySelector( '.excludeKeys' ).style.height = newHeight + 'px';
 		}
 	}
+
+	// Create final entry
+	createEntry();
 }
