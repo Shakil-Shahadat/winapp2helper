@@ -11,13 +11,14 @@
 <body>
 
 <main class="container" style="max-width: 960px">
-	<p>
-		Entry Name *
-		<button onclick="addEntry()" class="btn btn-outline-primary btn-sm float-end">
-			Add Existing Entry
-		</button><br>
+
+	<div class="input-group mb-3">
+		<span class="input-group-text">Entry Name *</span>
 		<input type="text" class="entryName form-control" spellcheck="false" autofocus>
-	</p>
+		<button class="btn btn-outline-primary" onclick="addEntry()">
+			Add Existing Entry
+		</button>
+	</div>
 
 	<p>
 		OS Selection Mode
