@@ -440,8 +440,9 @@ function addEntry()
 			let newHeight = document.querySelector( '.excludeKeys' ).scrollHeight + 2;
 			document.querySelector( '.excludeKeys' ).style.height = newHeight + 'px';
 		}
-	}
+	} // for loop ends
 
 	// Create final entry
 	createEntry();
 }
+// addEntry() ends
