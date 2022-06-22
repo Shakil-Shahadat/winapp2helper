@@ -259,7 +259,7 @@ function enableOS()
 	}
 	else
 	{
-		document.querySelector( '.osName' ).parentNode.style.display = 'block';
+		document.querySelector( '.osName' ).parentNode.style.display = '';
 	}
 }
 
