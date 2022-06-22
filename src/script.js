@@ -333,7 +333,7 @@ function addEntry()
 				document.querySelector( '.osMode' ).value = 'Strict OS Version';
 				document.querySelector( '.osName' ).value = otherPart.split( '|' )[ 0 ];
 			}
-			document.querySelector( '.osName' ).removeAttribute( 'disabled' );
+			document.querySelector( '.osName' ).parentNode.classList.remove( 'd-none' );
 		}
 
 		// Set Section
