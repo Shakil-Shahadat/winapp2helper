@@ -53,11 +53,11 @@ function createEntry()
 
 	// Show error if both 'Registry Keys to Detect' &
 	// 'Files / Folders to Detect' are empty
-	if ( document.querySelector( '.registryDetect' ).value === '' && document.querySelector( '.fileFolderDetect' ).value === '' )
+	if ( document.querySelector( '.fileFolderDetect' ).value === '' && document.querySelector( '.registryDetect' ).value === '' )
 	{
-		alert( "Please provide at least one of 'Registry Keys to Detect' "
-				+ "and 'Files / Folders to Detect'." );
-		document.querySelector( '.registryDetect' ).focus();
+		alert( "Please provide at least one of 'Files / Folders to Detect' "
+				+ "and 'Registry Keys to Detect'." );
+		document.querySelector( '.fileFolderDetect' ).focus();
 		return;
 	}
 
