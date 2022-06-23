@@ -149,13 +149,23 @@ function createEntry()
 		{
 			finalText += '\nExcludeKey';
 			finalText += parseInt( i ) + 1;
-			if ( /^REG/.test( excludeKeysParts[ i ] ) )
+			if ( /^REG\|/.test( excludeKeysParts[ i ] ) )
 			{
 				finalText += '=' + replaceRegFolders ( excludeKeysParts[ i ] );
 			}
-			else
+			else if ( /^FILE\|/.test( excludeKeysParts[ i ] ) )
 			{
 				finalText += '=' + replaceEnvVar ( excludeKeysParts[ i ] );
+			}
+			else if ( /^PATH\|/.test( excludeKeysParts[ i ] ) )
+			{
+				finalText += '=' + replaceEnvVar ( excludeKeysParts[ i ] );
+			}
+			else
+			{
+				alert( "Every 'Exclude Keys' must start with 'FILE|' or 'PATH|' or 'REG|'." );
+				document.querySelector( '.excludeKeys' ).focus();
+				return;
 			}
 		}
 	}
