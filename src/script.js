@@ -12,7 +12,12 @@ function createEntry()
 	}
 	else
 	{
-		finalText += '[' + document.querySelector( '.entryName' ).value + ' *]';
+		finalText += '[' + document.querySelector( '.entryName' ).value;
+		if ( document.querySelector( '.entryType' ).value !== 'General' )
+		{
+			finalText += ' ' + document.querySelector( '.entryType' ).value;
+		}
+		finalText += ' *]';
 	}
 
 	// Get OS Selection
