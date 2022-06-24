@@ -371,9 +371,7 @@ function addEntry()
 			{
 				document.querySelector( '.registryDetect' ).value += '\n' + entryParts[ i ].replace( matchedPart, '' );
 			}
-			document.querySelector( '.registryDetect' ).style.height = 'auto';
-			let newHeight = document.querySelector( '.registryDetect' ).scrollHeight + 2;
-			document.querySelector( '.registryDetect' ).style.height = newHeight + 'px';
+			resizeTextArea2( 'registryDetect' );
 		}
 
 		// Set File Detection Entries
@@ -388,9 +386,7 @@ function addEntry()
 			{
 				document.querySelector( '.fileFolderDetect' ).value += '\n' + entryParts[ i ].replace( matchedPart, '' );
 			}
-			document.querySelector( '.fileFolderDetect' ).style.height = 'auto';
-			let newHeight = document.querySelector( '.fileFolderDetect' ).scrollHeight + 2;
-			document.querySelector( '.fileFolderDetect' ).style.height = newHeight + 'px';
+			resizeTextArea2( 'fileFolderDetect' );
 		}
 
 		// Set warning message
@@ -419,9 +415,7 @@ function addEntry()
 			{
 				document.querySelector( '.fileFolderRemovals' ).value += '\n' + entryParts[ i ].replace( matchedPart, '' );
 			}
-			document.querySelector( '.fileFolderRemovals' ).style.height = 'auto';
-			let newHeight = document.querySelector( '.fileFolderRemovals' ).scrollHeight + 2;
-			document.querySelector( '.fileFolderRemovals' ).style.height = newHeight + 'px';
+			resizeTextArea2( 'fileFolderRemovals' );
 		}
 
 		// Set registry removal parts
@@ -436,9 +430,7 @@ function addEntry()
 			{
 				document.querySelector( '.registryKeyRemovals' ).value += '\n' + entryParts[ i ].replace( matchedPart, '' );
 			}
-			document.querySelector( '.registryKeyRemovals' ).style.height = 'auto';
-			let newHeight = document.querySelector( '.registryKeyRemovals' ).scrollHeight + 2;
-			document.querySelector( '.registryKeyRemovals' ).style.height = newHeight + 'px';
+			resizeTextArea2( 'registryKeyRemovals' );
 		}
 
 		// Set exclude key parts
@@ -453,9 +445,7 @@ function addEntry()
 			{
 				document.querySelector( '.excludeKeys' ).value += '\n' + entryParts[ i ].replace( matchedPart, '' );
 			}
-			document.querySelector( '.excludeKeys' ).style.height = 'auto';
-			let newHeight = document.querySelector( '.excludeKeys' ).scrollHeight + 2;
-			document.querySelector( '.excludeKeys' ).style.height = newHeight + 'px';
+			resizeTextArea2( 'excludeKeys' );
 		}
 	} // for loop ends
 
