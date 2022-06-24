@@ -175,10 +175,8 @@ function createEntry()
 		}
 	}
 
-	let finalEntry = document.querySelector( '.finalEntry' );
-
 	// Add the final entry to final entry text box
-	finalEntry.innerHTML = finalText;
+	document.querySelector( '.finalEntry' ).innerHTML = finalText;
 
 	// Enlarge final entry text box
 	resizeTextArea2( 'finalEntry' );
