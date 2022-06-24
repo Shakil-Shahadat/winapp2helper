@@ -344,14 +344,14 @@ function addEntry()
 			document.querySelector( '.osName' ).parentNode.classList.remove( 'd-none' );
 		}
 
-		// Set Section
+		// Set Section: Defined by 'LangSecRef'
 		else if ( /^LangSecRef=/.test( entryParts[ i ] ) )
 		{
 			let matchedPart = entryParts[ i ].match( /^LangSecRef=/ );
 			let otherPart = entryParts[ i ].replace( matchedPart, '' );
 			document.querySelector( '.section' ).value = otherPart;
 		}
-		// Section can be defined in two ways
+		// Set Section: Defined by 'Section'
 		else if ( /^Section=/.test( entryParts[ i ] ) )
 		{
 			let matchedPart = entryParts[ i ].match( /^Section=/ );
@@ -359,7 +359,7 @@ function addEntry()
 			document.querySelector( '.section' ).value = otherPart;
 		}
 
-		// Set Registry Detection Entries
+		// Set Registry Keys Detection Entries
 		else if ( /^Detect\d*=/.test( entryParts[ i ] ) )
 		{
 			let matchedPart = entryParts[ i ].match( /^Detect\d*=/ );
@@ -374,7 +374,7 @@ function addEntry()
 			resizeTextArea2( 'registryDetect' );
 		}
 
-		// Set File Detection Entries
+		// Set Files / Folders Detection Entries
 		else if ( /^DetectFile\d*=/.test( entryParts[ i ] ) )
 		{
 			let matchedPart = entryParts[ i ].match( /^DetectFile\d*=/ );
@@ -389,7 +389,7 @@ function addEntry()
 			resizeTextArea2( 'fileFolderDetect' );
 		}
 
-		// Set warning message
+		// Set Warning Message
 		else if ( /^Warning=/.test( entryParts[ i ] ) )
 		{
 			let matchedPart = entryParts[ i ].match( /^Warning=/ );
@@ -403,7 +403,7 @@ function addEntry()
 			}
 		}
 
-		// Set file removal parts
+		// Set Files / Folders Removal Parts
 		else if ( /^FileKey\d*=/.test( entryParts[ i ] ) )
 		{
 			let matchedPart = entryParts[ i ].match( /^FileKey\d*=/ );
@@ -418,7 +418,7 @@ function addEntry()
 			resizeTextArea2( 'fileFolderRemovals' );
 		}
 
-		// Set registry removal parts
+		// Set Registry Keys Removal Parts
 		else if ( /^RegKey\d*=/.test( entryParts[ i ] ) )
 		{
 			let matchedPart = entryParts[ i ].match( /^RegKey\d*=/ );
@@ -433,7 +433,7 @@ function addEntry()
 			resizeTextArea2( 'registryKeyRemovals' );
 		}
 
-		// Set exclude key parts
+		// Set Exclude Keys
 		else if ( /^ExcludeKey\d*=/.test( entryParts[ i ] ) )
 		{
 			let matchedPart = entryParts[ i ].match( /^ExcludeKey\d*=/ );
