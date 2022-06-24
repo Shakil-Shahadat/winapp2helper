@@ -181,9 +181,7 @@ function createEntry()
 	finalEntry.innerHTML = finalText;
 
 	// Enlarge final entry text box
-	finalEntry.style.height = 'auto';
-	let newHeight = finalEntry.scrollHeight + 2;
-	finalEntry.style.height = newHeight + 'px';
+	resizeTextArea2( 'finalEntry' );
 
 	// Visual feedback for 'Create Entry' button
 	document.querySelector( '.createButton' ).innerText = '🎉 Created!';
@@ -299,6 +297,12 @@ function resizeTextarea()
 	this.style.height = 'auto';
 	let newHeight = this.scrollHeight + 2;
 	this.style.height = newHeight + 'px';
+}
+function resizeTextArea2( cls )
+{
+	document.querySelector( '.' + cls ).style.height = 'auto';
+	let newHeight = document.querySelector( '.' + cls ).scrollHeight + 2;
+	document.querySelector( '.' + cls ).style.height = newHeight + 'px';
 }
 
 // A function to add an existing entry for editing
