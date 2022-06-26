@@ -12,102 +12,108 @@
 
 <main class="container col-6">
 
-	<div class="input-group mb-3">
-		<span class="input-group-text">Entry Name *</span>
-		<input type="text" class="entryName form-control" spellcheck="false" autofocus>
-		<button class="btn btn-outline-primary" onclick="addEntry()">
-			Add Existing Entry
-		</button>
-	</div>
+	<fieldset>
 
-	<div class="input-group mb-3">
-		<span class="input-group-text">Entry Type</span>
-		<select class="entryType form-select">
-			<option>General</option>
-			<option>Backups</option>
-			<option>Cache</option>
-			<option>Extended</option>
-			<option>Installation Files</option>
-			<option>Languages</option>
-			<option>License Text Files</option>
-			<option>Logs</option>
-			<option>Output</option>
-			<option>Playlists</option>
-			<option>Promo Videos</option>
-			<option>Removal</option>
-			<option>Saves</option>
-			<option>Saved Benchmarks</option>
-			<option>Setup Files</option>
-			<option>Videos</option>
-		</select>
-	</div>
+		<legend>Basic Information</legend>
 
-	<div class="input-group mb-3">
-		<span class="input-group-text">OS Selection Mode</span>
-		<select class="osMode form-select" onchange="enableOS()">
-			<option>None</option>
-			<option>Minimum OS Version</option>
-			<option>Maximum OS Version</option>
-			<option>Strict OS Version</option>
-		</select>
-	</div>
+		<div class="input-group mb-3">
+			<span class="input-group-text">Entry Name *</span>
+			<input type="text" class="entryName form-control" spellcheck="false" autofocus>
+			<button class="btn btn-outline-primary" onclick="addEntry()">
+				Add Existing Entry
+			</button>
+		</div>
 
-	<div class="input-group d-none mb-3">
-		<span class="input-group-text">Operating System</span>
-		<select class="osName form-select">
-			<option value="5.0">Windows 2000</option>
-			<option value="5.1">Windows XP</option>
-			<option value="5.2">Windows XP 64-Bit Edition, Windows Server 2003, Windows Home Server</option>
-			<option value="6.0">Windows Vista, Windows Server 2008</option>
-			<option value="6.1">Windows 7, Windows Server 2008 R2, Windows Home Server 2011</option>
-			<option value="6.2">Windows 8, Windows Server 2012</option>
-			<option value="6.3">Windows 8.1, Windows Server 2012 R2</option>
-			<option value="10.0">Windows 10, Windows Server 2016, Windows Server 2019</option>
-		</select>
-	</div>
+		<div class="input-group mb-3">
+			<span class="input-group-text">Entry Type</span>
+			<select class="entryType form-select">
+				<option>General</option>
+				<option>Backups</option>
+				<option>Cache</option>
+				<option>Extended</option>
+				<option>Installation Files</option>
+				<option>Languages</option>
+				<option>License Text Files</option>
+				<option>Logs</option>
+				<option>Output</option>
+				<option>Playlists</option>
+				<option>Promo Videos</option>
+				<option>Removal</option>
+				<option>Saves</option>
+				<option>Saved Benchmarks</option>
+				<option>Setup Files</option>
+				<option>Videos</option>
+			</select>
+		</div>
 
-	<div class="input-group mb-3">
-		<span class="input-group-text">Section</span>
-		<select class="section form-select">
-			<option>None</option>
-			<option disabled>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; For Winapp2 Entry</option>
-			<option value="3001">Internet Explorer</option>
-			<option value="3005">Microsoft Edge</option>
-			<option value="3006">Edge Chromium</option>
-			<option value="3021" selected>Applications</option>
-			<option value="3022">Internet</option>
-			<option value="3023">Multimedia</option>
-			<option value="3024">Utilities</option>
-			<option value="3025">Windows</option>
-			<option value="3026">Firefox</option>
-			<option value="3027">Opera</option>
-			<option value="3028">Safari</option>
-			<option value="3029">Google Chrome</option>
-			<option value="3030">Thunderbird</option>
-			<option value="3031">Windows Store</option>
-			<option value="3032">CCleaner Browser</option>
-			<option value="3033">Vivaldi</option>
-			<option value="3034">Brave</option>
-			<option>Games</option>
-			<option disabled>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; For Winapp3 Entry</option>
-			<option>Language Files</option>
-			<option>Dangerous Applications</option>
-			<option>Dangerous Brave</option>
-			<option>Dangerous Edge Chromium</option>
-			<option>Dangerous Firefox</option>
-			<option>Dangerous Games</option>
-			<option>Dangerous Google Chrome</option>
-			<option>Dangerous Internet</option>
-			<option>Dangerous Internet Explorer</option>
-			<option>Dangerous Long</option>
-			<option>Dangerous Multimedia</option>
-			<option>Dangerous Opera</option>
-			<option>Dangerous Utilities</option>
-			<option>Dangerous Vivaldi</option>
-			<option>Dangerous Windows</option>
-			<option>Dangerous Windows Store</option>
-		</select>
-	</div>
+		<div class="input-group mb-3">
+			<span class="input-group-text">OS Selection Mode</span>
+			<select class="osMode form-select" onchange="enableOS()">
+				<option>None</option>
+				<option>Minimum OS Version</option>
+				<option>Maximum OS Version</option>
+				<option>Strict OS Version</option>
+			</select>
+		</div>
+
+		<div class="input-group d-none mb-3">
+			<span class="input-group-text">Operating System</span>
+			<select class="osName form-select">
+				<option value="5.0">Windows 2000</option>
+				<option value="5.1">Windows XP</option>
+				<option value="5.2">Windows XP 64-Bit Edition, Windows Server 2003, Windows Home Server</option>
+				<option value="6.0">Windows Vista, Windows Server 2008</option>
+				<option value="6.1">Windows 7, Windows Server 2008 R2, Windows Home Server 2011</option>
+				<option value="6.2">Windows 8, Windows Server 2012</option>
+				<option value="6.3">Windows 8.1, Windows Server 2012 R2</option>
+				<option value="10.0">Windows 10, Windows Server 2016, Windows Server 2019</option>
+			</select>
+		</div>
+
+		<div class="input-group mb-3">
+			<span class="input-group-text">Section</span>
+			<select class="section form-select">
+				<option>None</option>
+				<option disabled>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; For Winapp2 Entry</option>
+				<option value="3001">Internet Explorer</option>
+				<option value="3005">Microsoft Edge</option>
+				<option value="3006">Edge Chromium</option>
+				<option value="3021" selected>Applications</option>
+				<option value="3022">Internet</option>
+				<option value="3023">Multimedia</option>
+				<option value="3024">Utilities</option>
+				<option value="3025">Windows</option>
+				<option value="3026">Firefox</option>
+				<option value="3027">Opera</option>
+				<option value="3028">Safari</option>
+				<option value="3029">Google Chrome</option>
+				<option value="3030">Thunderbird</option>
+				<option value="3031">Windows Store</option>
+				<option value="3032">CCleaner Browser</option>
+				<option value="3033">Vivaldi</option>
+				<option value="3034">Brave</option>
+				<option>Games</option>
+				<option disabled>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; For Winapp3 Entry</option>
+				<option>Language Files</option>
+				<option>Dangerous Applications</option>
+				<option>Dangerous Brave</option>
+				<option>Dangerous Edge Chromium</option>
+				<option>Dangerous Firefox</option>
+				<option>Dangerous Games</option>
+				<option>Dangerous Google Chrome</option>
+				<option>Dangerous Internet</option>
+				<option>Dangerous Internet Explorer</option>
+				<option>Dangerous Long</option>
+				<option>Dangerous Multimedia</option>
+				<option>Dangerous Opera</option>
+				<option>Dangerous Utilities</option>
+				<option>Dangerous Vivaldi</option>
+				<option>Dangerous Windows</option>
+				<option>Dangerous Windows Store</option>
+			</select>
+		</div>
+
+	</fieldset>
 
 	<fieldset>
 
