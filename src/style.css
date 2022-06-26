@@ -6,3 +6,7 @@ input, main, textarea
 {
 	font-size: 18px;
 }
+legend
+{
+	font-style: italic;
+}
