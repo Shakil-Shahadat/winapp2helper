@@ -160,6 +160,13 @@ function createEntry()
 			}
 			else if ( /^FILE\|/.test( excludeKeysParts[ i ] ) )
 			{
+				// Check if it contains '\' at the end of the path
+				let pos = excludeKeysParts[ i ].lastIndexOf( '|' );
+				if ( excludeKeysParts[ i ].charAt( pos - 1 ) !== '\\' )
+				{
+					alert( "Every 'Exclude Keys' requires '\\' at the end of the path." );
+					document.querySelector( '.excludeKeys' ).focus();
+				}
 				finalText += '=' + replaceEnvVar ( excludeKeysParts[ i ] );
 			}
 			else if ( /^PATH\|/.test( excludeKeysParts[ i ] ) )
