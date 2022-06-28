@@ -167,10 +167,10 @@ for ( e of document.querySelectorAll( 'textarea' ) )
 {
 	for ( s of [ 'keyup', 'keydown', 'change', 'cut', 'paste', 'drop' ] )
 	{
-		e.addEventListener( s, resizeTextarea );
+		e.addEventListener( s, resizeTextArea );
 	}
 }
-function resizeTextarea()
+function resizeTextArea()
 {
 	this.style.height = 'auto';
 	let newHeight = this.scrollHeight + 2;
