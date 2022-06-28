@@ -163,18 +163,18 @@ function enableOS()
 }
 
 // Text Area Auto Grow Script
+function resizeTextArea()
+{
+	this.style.height = 'auto';
+	let newHeight = this.scrollHeight + 2;
+	this.style.height = newHeight + 'px';
+}
 for ( e of document.querySelectorAll( 'textarea' ) )
 {
 	for ( s of [ 'keyup', 'keydown', 'change', 'cut', 'paste', 'drop' ] )
 	{
 		e.addEventListener( s, resizeTextArea );
 	}
-}
-function resizeTextArea()
-{
-	this.style.height = 'auto';
-	let newHeight = this.scrollHeight + 2;
-	this.style.height = newHeight + 'px';
 }
 function resizeTextArea2( cls )
 {
