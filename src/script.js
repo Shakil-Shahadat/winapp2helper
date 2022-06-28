@@ -1,3 +1,188 @@
+// A function to add an existing entry for editing
+function addEntry()
+{
+	// Get the entry
+	let entry = prompt( 'Enter an existing entry to edit.' );
+
+	// Exit function if prompt is cancelled
+	if ( entry === null ) return;
+
+	// Split the entry into lines
+	let entryParts = entry.split( '\r\n' );
+
+	// Set entry name
+	document.querySelector( '.entryName' ).value = entryParts[ 0 ].replace( '[', '' ).replace( ' *]', '' );
+
+	// Loop over lines to add them in respective section
+	for ( let i = 1; i < entryParts.length; i++ )
+	{
+		// Set OS Selection Mode & OS
+		if ( /^DetectOS=/.test( entryParts[ i ] ) )
+		{
+			let matchedPart = entryParts[ i ].match( /^DetectOS=/ );
+			let otherPart = entryParts[ i ].replace( matchedPart, '' );
+			if ( /^\|/.test( otherPart ) )
+			{
+				document.querySelector( '.osMode' ).value = 'Maximum OS Version';
+				document.querySelector( '.osName' ).value = otherPart.replace( '|', '' );
+			}
+			else if ( /\|$/.test( otherPart ) )
+			{
+				document.querySelector( '.osMode' ).value = 'Minimum OS Version';
+				document.querySelector( '.osName' ).value = otherPart.replace( '|', '' );
+			}
+			else
+			{
+				document.querySelector( '.osMode' ).value = 'Strict OS Version';
+				document.querySelector( '.osName' ).value = otherPart.split( '|' )[ 0 ];
+			}
+			document.querySelector( '.osName' ).parentNode.classList.remove( 'd-none' );
+		}
+
+		// Set Section: Defined by 'LangSecRef'
+		else if ( /^LangSecRef=/.test( entryParts[ i ] ) )
+		{
+			let matchedPart = entryParts[ i ].match( /^LangSecRef=/ );
+			let otherPart = entryParts[ i ].replace( matchedPart, '' );
+			document.querySelector( '.section' ).value = otherPart;
+		}
+		// Set Section: Defined by 'Section'
+		else if ( /^Section=/.test( entryParts[ i ] ) )
+		{
+			let matchedPart = entryParts[ i ].match( /^Section=/ );
+			let otherPart = entryParts[ i ].replace( matchedPart, '' );
+			document.querySelector( '.section' ).value = otherPart;
+		}
+
+		// Set Registry Keys Detection Entries
+		else if ( /^Detect\d*=/.test( entryParts[ i ] ) )
+		{
+			let matchedPart = entryParts[ i ].match( /^Detect\d*=/ );
+			if ( document.querySelector( '.registryDetect' ).value === '' )
+			{
+				document.querySelector( '.registryDetect' ).value = entryParts[ i ].replace( matchedPart, '' );
+			}
+			else
+			{
+				document.querySelector( '.registryDetect' ).value += '\n' + entryParts[ i ].replace( matchedPart, '' );
+			}
+			resizeTextArea2( 'registryDetect' );
+		}
+
+		// Set Files / Folders Detection Entries
+		else if ( /^DetectFile\d*=/.test( entryParts[ i ] ) )
+		{
+			let matchedPart = entryParts[ i ].match( /^DetectFile\d*=/ );
+			if ( document.querySelector( '.fileFolderDetect' ).value === '' )
+			{
+				document.querySelector( '.fileFolderDetect' ).value = entryParts[ i ].replace( matchedPart, '' );
+			}
+			else
+			{
+				document.querySelector( '.fileFolderDetect' ).value += '\n' + entryParts[ i ].replace( matchedPart, '' );
+			}
+			resizeTextArea2( 'fileFolderDetect' );
+		}
+
+		// Set Warning Message
+		else if ( /^Warning=/.test( entryParts[ i ] ) )
+		{
+			let matchedPart = entryParts[ i ].match( /^Warning=/ );
+			if ( document.querySelector( '.warning' ).value === '' )
+			{
+				document.querySelector( '.warning' ).value = entryParts[ i ].replace( matchedPart, '' );
+			}
+			else
+			{
+				document.querySelector( '.warning' ).value += '\n' + entryParts[ i ].replace( matchedPart, '' );
+			}
+		}
+
+		// Set Files / Folders Removal Parts
+		else if ( /^FileKey\d*=/.test( entryParts[ i ] ) )
+		{
+			let matchedPart = entryParts[ i ].match( /^FileKey\d*=/ );
+			if ( document.querySelector( '.fileFolderRemovals' ).value === '' )
+			{
+				document.querySelector( '.fileFolderRemovals' ).value = entryParts[ i ].replace( matchedPart, '' );
+			}
+			else
+			{
+				document.querySelector( '.fileFolderRemovals' ).value += '\n' + entryParts[ i ].replace( matchedPart, '' );
+			}
+			resizeTextArea2( 'fileFolderRemovals' );
+		}
+
+		// Set Registry Keys Removal Parts
+		else if ( /^RegKey\d*=/.test( entryParts[ i ] ) )
+		{
+			let matchedPart = entryParts[ i ].match( /^RegKey\d*=/ );
+			if ( document.querySelector( '.registryKeyRemovals' ).value === '' )
+			{
+				document.querySelector( '.registryKeyRemovals' ).value = entryParts[ i ].replace( matchedPart, '' );
+			}
+			else
+			{
+				document.querySelector( '.registryKeyRemovals' ).value += '\n' + entryParts[ i ].replace( matchedPart, '' );
+			}
+			resizeTextArea2( 'registryKeyRemovals' );
+		}
+
+		// Set Exclude Keys
+		else if ( /^ExcludeKey\d*=/.test( entryParts[ i ] ) )
+		{
+			let matchedPart = entryParts[ i ].match( /^ExcludeKey\d*=/ );
+			if ( document.querySelector( '.excludeKeys' ).value === '' )
+			{
+				document.querySelector( '.excludeKeys' ).value = entryParts[ i ].replace( matchedPart, '' );
+			}
+			else
+			{
+				document.querySelector( '.excludeKeys' ).value += '\n' + entryParts[ i ].replace( matchedPart, '' );
+			}
+			resizeTextArea2( 'excludeKeys' );
+		}
+	} // for loop ends
+
+	// Create final entry
+	createEntry();
+}
+// addEntry() ends
+
+// Enable / disable OS selection drop down
+function enableOS()
+{
+	if ( document.querySelector( '.osMode' ).value === 'None' )
+	{
+		document.querySelector( '.osName' ).parentNode.classList.add( 'd-none' );
+	}
+	else
+	{
+		document.querySelector( '.osName' ).parentNode.classList.remove( 'd-none' );
+	}
+}
+
+// Text Area Auto Grow Script
+for ( e of document.querySelectorAll( 'textarea' ) )
+{
+	for ( s of [ 'keyup', 'keydown', 'change', 'cut', 'paste', 'drop' ] )
+	{
+		e.addEventListener( s, resizeTextarea );
+	}
+}
+function resizeTextarea()
+{
+	this.style.height = 'auto';
+	let newHeight = this.scrollHeight + 2;
+	this.style.height = newHeight + 'px';
+}
+function resizeTextArea2( cls )
+{
+	document.querySelector( '.' + cls ).style.height = 'auto';
+	let newHeight = document.querySelector( '.' + cls ).scrollHeight + 2;
+	document.querySelector( '.' + cls ).style.height = newHeight + 'px';
+}
+
 // A function to create final entry
 function createEntry()
 {
@@ -277,19 +462,6 @@ function replaceEnvVar( txt )
 }
 // replaceEnvVar() ends
 
-// Enable / disable OS selection drop down
-function enableOS()
-{
-	if ( document.querySelector( '.osMode' ).value === 'None' )
-	{
-		document.querySelector( '.osName' ).parentNode.classList.add( 'd-none' );
-	}
-	else
-	{
-		document.querySelector( '.osName' ).parentNode.classList.remove( 'd-none' );
-	}
-}
-
 // Copy entry to clipboard
 function copy2Clipboard()
 {
@@ -297,175 +469,3 @@ function copy2Clipboard()
 	document.querySelector( '.copyButton' ).innerText = '✔️ Copied!';
 	setTimeout( function(){ document.querySelector( '.copyButton' ).innerText = 'Copy'; }, 3000 );
 }
-
-// Text Area Auto Grow Script
-for ( e of document.querySelectorAll( 'textarea' ) )
-{
-	for ( s of [ 'keyup', 'keydown', 'change', 'cut', 'paste', 'drop' ] )
-	{
-		e.addEventListener( s, resizeTextarea );
-	}
-}
-function resizeTextarea()
-{
-	this.style.height = 'auto';
-	let newHeight = this.scrollHeight + 2;
-	this.style.height = newHeight + 'px';
-}
-function resizeTextArea2( cls )
-{
-	document.querySelector( '.' + cls ).style.height = 'auto';
-	let newHeight = document.querySelector( '.' + cls ).scrollHeight + 2;
-	document.querySelector( '.' + cls ).style.height = newHeight + 'px';
-}
-
-// A function to add an existing entry for editing
-function addEntry()
-{
-	// Get the entry
-	let entry = prompt( 'Enter an existing entry to edit.' );
-
-	// Exit function if prompt is cancelled
-	if ( entry === null ) return;
-
-	// Split the entry into lines
-	let entryParts = entry.split( '\r\n' );
-
-	// Set entry name
-	document.querySelector( '.entryName' ).value = entryParts[ 0 ].replace( '[', '' ).replace( ' *]', '' );
-
-	// Loop over lines to add them in respective section
-	for ( let i = 1; i < entryParts.length; i++ )
-	{
-		// Set OS Selection Mode & OS
-		if ( /^DetectOS=/.test( entryParts[ i ] ) )
-		{
-			let matchedPart = entryParts[ i ].match( /^DetectOS=/ );
-			let otherPart = entryParts[ i ].replace( matchedPart, '' );
-			if ( /^\|/.test( otherPart ) )
-			{
-				document.querySelector( '.osMode' ).value = 'Maximum OS Version';
-				document.querySelector( '.osName' ).value = otherPart.replace( '|', '' );
-			}
-			else if ( /\|$/.test( otherPart ) )
-			{
-				document.querySelector( '.osMode' ).value = 'Minimum OS Version';
-				document.querySelector( '.osName' ).value = otherPart.replace( '|', '' );
-			}
-			else
-			{
-				document.querySelector( '.osMode' ).value = 'Strict OS Version';
-				document.querySelector( '.osName' ).value = otherPart.split( '|' )[ 0 ];
-			}
-			document.querySelector( '.osName' ).parentNode.classList.remove( 'd-none' );
-		}
-
-		// Set Section: Defined by 'LangSecRef'
-		else if ( /^LangSecRef=/.test( entryParts[ i ] ) )
-		{
-			let matchedPart = entryParts[ i ].match( /^LangSecRef=/ );
-			let otherPart = entryParts[ i ].replace( matchedPart, '' );
-			document.querySelector( '.section' ).value = otherPart;
-		}
-		// Set Section: Defined by 'Section'
-		else if ( /^Section=/.test( entryParts[ i ] ) )
-		{
-			let matchedPart = entryParts[ i ].match( /^Section=/ );
-			let otherPart = entryParts[ i ].replace( matchedPart, '' );
-			document.querySelector( '.section' ).value = otherPart;
-		}
-
-		// Set Registry Keys Detection Entries
-		else if ( /^Detect\d*=/.test( entryParts[ i ] ) )
-		{
-			let matchedPart = entryParts[ i ].match( /^Detect\d*=/ );
-			if ( document.querySelector( '.registryDetect' ).value === '' )
-			{
-				document.querySelector( '.registryDetect' ).value = entryParts[ i ].replace( matchedPart, '' );
-			}
-			else
-			{
-				document.querySelector( '.registryDetect' ).value += '\n' + entryParts[ i ].replace( matchedPart, '' );
-			}
-			resizeTextArea2( 'registryDetect' );
-		}
-
-		// Set Files / Folders Detection Entries
-		else if ( /^DetectFile\d*=/.test( entryParts[ i ] ) )
-		{
-			let matchedPart = entryParts[ i ].match( /^DetectFile\d*=/ );
-			if ( document.querySelector( '.fileFolderDetect' ).value === '' )
-			{
-				document.querySelector( '.fileFolderDetect' ).value = entryParts[ i ].replace( matchedPart, '' );
-			}
-			else
-			{
-				document.querySelector( '.fileFolderDetect' ).value += '\n' + entryParts[ i ].replace( matchedPart, '' );
-			}
-			resizeTextArea2( 'fileFolderDetect' );
-		}
-
-		// Set Warning Message
-		else if ( /^Warning=/.test( entryParts[ i ] ) )
-		{
-			let matchedPart = entryParts[ i ].match( /^Warning=/ );
-			if ( document.querySelector( '.warning' ).value === '' )
-			{
-				document.querySelector( '.warning' ).value = entryParts[ i ].replace( matchedPart, '' );
-			}
-			else
-			{
-				document.querySelector( '.warning' ).value += '\n' + entryParts[ i ].replace( matchedPart, '' );
-			}
-		}
-
-		// Set Files / Folders Removal Parts
-		else if ( /^FileKey\d*=/.test( entryParts[ i ] ) )
-		{
-			let matchedPart = entryParts[ i ].match( /^FileKey\d*=/ );
-			if ( document.querySelector( '.fileFolderRemovals' ).value === '' )
-			{
-				document.querySelector( '.fileFolderRemovals' ).value = entryParts[ i ].replace( matchedPart, '' );
-			}
-			else
-			{
-				document.querySelector( '.fileFolderRemovals' ).value += '\n' + entryParts[ i ].replace( matchedPart, '' );
-			}
-			resizeTextArea2( 'fileFolderRemovals' );
-		}
-
-		// Set Registry Keys Removal Parts
-		else if ( /^RegKey\d*=/.test( entryParts[ i ] ) )
-		{
-			let matchedPart = entryParts[ i ].match( /^RegKey\d*=/ );
-			if ( document.querySelector( '.registryKeyRemovals' ).value === '' )
-			{
-				document.querySelector( '.registryKeyRemovals' ).value = entryParts[ i ].replace( matchedPart, '' );
-			}
-			else
-			{
-				document.querySelector( '.registryKeyRemovals' ).value += '\n' + entryParts[ i ].replace( matchedPart, '' );
-			}
-			resizeTextArea2( 'registryKeyRemovals' );
-		}
-
-		// Set Exclude Keys
-		else if ( /^ExcludeKey\d*=/.test( entryParts[ i ] ) )
-		{
-			let matchedPart = entryParts[ i ].match( /^ExcludeKey\d*=/ );
-			if ( document.querySelector( '.excludeKeys' ).value === '' )
-			{
-				document.querySelector( '.excludeKeys' ).value = entryParts[ i ].replace( matchedPart, '' );
-			}
-			else
-			{
-				document.querySelector( '.excludeKeys' ).value += '\n' + entryParts[ i ].replace( matchedPart, '' );
-			}
-			resizeTextArea2( 'excludeKeys' );
-		}
-	} // for loop ends
-
-	// Create final entry
-	createEntry();
-}
-// addEntry() ends
