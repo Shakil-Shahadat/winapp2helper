@@ -166,6 +166,7 @@ function createEntry()
 				{
 					alert( "Every 'Exclude Keys' requires '\\' at the end of the path." );
 					document.querySelector( '.excludeKeys' ).focus();
+					return;
 				}
 				finalText += '=' + replaceEnvVar ( excludeKeysParts[ i ] );
 			}
