@@ -172,6 +172,14 @@ function createEntry()
 			}
 			else if ( /^PATH\|/.test( excludeKeysParts[ i ] ) )
 			{
+				// Check if it contains '\' at the end of the path
+				let pos = excludeKeysParts[ i ].lastIndexOf( '|' );
+				if ( excludeKeysParts[ i ].charAt( pos - 1 ) !== '\\' )
+				{
+					alert( "Every 'Exclude Keys' requires '\\' at the end of the path." );
+					document.querySelector( '.excludeKeys' ).focus();
+					return;
+				}
 				finalText += '=' + replaceEnvVar ( excludeKeysParts[ i ] );
 			}
 			else
