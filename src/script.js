@@ -1,3 +1,9 @@
+// Helper function
+function qs( cls )
+{
+	return document.querySelector( cls );
+}
+
 // A function to add an existing entry for editing
 function addEntry()
 {
