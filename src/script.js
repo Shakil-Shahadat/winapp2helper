@@ -17,7 +17,7 @@ function addEntry()
 	let entryParts = entry.split( '\r\n' );
 
 	// Set entry name
-	document.querySelector( '.entryName' ).value = entryParts[ 0 ].replace( '[', '' ).replace( ' *]', '' );
+	qs( '.entryName' ).value = entryParts[ 0 ].replace( '[', '' ).replace( ' *]', '' );
 
 	// Loop over lines to add them in respective section
 	for ( let i = 1; i < entryParts.length; i++ )
@@ -29,20 +29,20 @@ function addEntry()
 			let otherPart = entryParts[ i ].replace( matchedPart, '' );
 			if ( /^\|/.test( otherPart ) )
 			{
-				document.querySelector( '.osMode' ).value = 'Maximum OS Version';
-				document.querySelector( '.osName' ).value = otherPart.replace( '|', '' );
+				qs( '.osMode' ).value = 'Maximum OS Version';
+				qs( '.osName' ).value = otherPart.replace( '|', '' );
 			}
 			else if ( /\|$/.test( otherPart ) )
 			{
-				document.querySelector( '.osMode' ).value = 'Minimum OS Version';
-				document.querySelector( '.osName' ).value = otherPart.replace( '|', '' );
+				qs( '.osMode' ).value = 'Minimum OS Version';
+				qs( '.osName' ).value = otherPart.replace( '|', '' );
 			}
 			else
 			{
-				document.querySelector( '.osMode' ).value = 'Strict OS Version';
-				document.querySelector( '.osName' ).value = otherPart.split( '|' )[ 0 ];
+				qs( '.osMode' ).value = 'Strict OS Version';
+				qs( '.osName' ).value = otherPart.split( '|' )[ 0 ];
 			}
-			document.querySelector( '.osName' ).parentNode.classList.remove( 'd-none' );
+			qs( '.osName' ).parentNode.classList.remove( 'd-none' );
 		}
 
 		// Set Section: Defined by 'LangSecRef'
@@ -50,27 +50,27 @@ function addEntry()
 		{
 			let matchedPart = entryParts[ i ].match( /^LangSecRef=/ );
 			let otherPart = entryParts[ i ].replace( matchedPart, '' );
-			document.querySelector( '.section' ).value = otherPart;
+			qs( '.section' ).value = otherPart;
 		}
 		// Set Section: Defined by 'Section'
 		else if ( /^Section=/.test( entryParts[ i ] ) )
 		{
 			let matchedPart = entryParts[ i ].match( /^Section=/ );
 			let otherPart = entryParts[ i ].replace( matchedPart, '' );
-			document.querySelector( '.section' ).value = otherPart;
+			qs( '.section' ).value = otherPart;
 		}
 
 		// Set Registry Keys Detection Entries
 		else if ( /^Detect\d*=/.test( entryParts[ i ] ) )
 		{
 			let matchedPart = entryParts[ i ].match( /^Detect\d*=/ );
-			if ( document.querySelector( '.registryDetect' ).value === '' )
+			if ( qs( '.registryDetect' ).value === '' )
 			{
-				document.querySelector( '.registryDetect' ).value = entryParts[ i ].replace( matchedPart, '' );
+				qs( '.registryDetect' ).value = entryParts[ i ].replace( matchedPart, '' );
 			}
 			else
 			{
-				document.querySelector( '.registryDetect' ).value += '\n' + entryParts[ i ].replace( matchedPart, '' );
+				qs( '.registryDetect' ).value += '\n' + entryParts[ i ].replace( matchedPart, '' );
 			}
 			resizeTextArea2( 'registryDetect' );
 		}
@@ -79,13 +79,13 @@ function addEntry()
 		else if ( /^DetectFile\d*=/.test( entryParts[ i ] ) )
 		{
 			let matchedPart = entryParts[ i ].match( /^DetectFile\d*=/ );
-			if ( document.querySelector( '.fileFolderDetect' ).value === '' )
+			if ( qs( '.fileFolderDetect' ).value === '' )
 			{
-				document.querySelector( '.fileFolderDetect' ).value = entryParts[ i ].replace( matchedPart, '' );
+				qs( '.fileFolderDetect' ).value = entryParts[ i ].replace( matchedPart, '' );
 			}
 			else
 			{
-				document.querySelector( '.fileFolderDetect' ).value += '\n' + entryParts[ i ].replace( matchedPart, '' );
+				qs( '.fileFolderDetect' ).value += '\n' + entryParts[ i ].replace( matchedPart, '' );
 			}
 			resizeTextArea2( 'fileFolderDetect' );
 		}
@@ -94,13 +94,13 @@ function addEntry()
 		else if ( /^Warning=/.test( entryParts[ i ] ) )
 		{
 			let matchedPart = entryParts[ i ].match( /^Warning=/ );
-			if ( document.querySelector( '.warning' ).value === '' )
+			if ( qs( '.warning' ).value === '' )
 			{
-				document.querySelector( '.warning' ).value = entryParts[ i ].replace( matchedPart, '' );
+				qs( '.warning' ).value = entryParts[ i ].replace( matchedPart, '' );
 			}
 			else
 			{
-				document.querySelector( '.warning' ).value += '\n' + entryParts[ i ].replace( matchedPart, '' );
+				qs( '.warning' ).value += '\n' + entryParts[ i ].replace( matchedPart, '' );
 			}
 		}
 
@@ -108,13 +108,13 @@ function addEntry()
 		else if ( /^FileKey\d*=/.test( entryParts[ i ] ) )
 		{
 			let matchedPart = entryParts[ i ].match( /^FileKey\d*=/ );
-			if ( document.querySelector( '.fileFolderRemovals' ).value === '' )
+			if ( qs( '.fileFolderRemovals' ).value === '' )
 			{
-				document.querySelector( '.fileFolderRemovals' ).value = entryParts[ i ].replace( matchedPart, '' );
+				qs( '.fileFolderRemovals' ).value = entryParts[ i ].replace( matchedPart, '' );
 			}
 			else
 			{
-				document.querySelector( '.fileFolderRemovals' ).value += '\n' + entryParts[ i ].replace( matchedPart, '' );
+				qs( '.fileFolderRemovals' ).value += '\n' + entryParts[ i ].replace( matchedPart, '' );
 			}
 			resizeTextArea2( 'fileFolderRemovals' );
 		}
@@ -123,13 +123,13 @@ function addEntry()
 		else if ( /^RegKey\d*=/.test( entryParts[ i ] ) )
 		{
 			let matchedPart = entryParts[ i ].match( /^RegKey\d*=/ );
-			if ( document.querySelector( '.registryKeyRemovals' ).value === '' )
+			if ( qs( '.registryKeyRemovals' ).value === '' )
 			{
-				document.querySelector( '.registryKeyRemovals' ).value = entryParts[ i ].replace( matchedPart, '' );
+				qs( '.registryKeyRemovals' ).value = entryParts[ i ].replace( matchedPart, '' );
 			}
 			else
 			{
-				document.querySelector( '.registryKeyRemovals' ).value += '\n' + entryParts[ i ].replace( matchedPart, '' );
+				qs( '.registryKeyRemovals' ).value += '\n' + entryParts[ i ].replace( matchedPart, '' );
 			}
 			resizeTextArea2( 'registryKeyRemovals' );
 		}
@@ -138,13 +138,13 @@ function addEntry()
 		else if ( /^ExcludeKey\d*=/.test( entryParts[ i ] ) )
 		{
 			let matchedPart = entryParts[ i ].match( /^ExcludeKey\d*=/ );
-			if ( document.querySelector( '.excludeKeys' ).value === '' )
+			if ( qs( '.excludeKeys' ).value === '' )
 			{
-				document.querySelector( '.excludeKeys' ).value = entryParts[ i ].replace( matchedPart, '' );
+				qs( '.excludeKeys' ).value = entryParts[ i ].replace( matchedPart, '' );
 			}
 			else
 			{
-				document.querySelector( '.excludeKeys' ).value += '\n' + entryParts[ i ].replace( matchedPart, '' );
+				qs( '.excludeKeys' ).value += '\n' + entryParts[ i ].replace( matchedPart, '' );
 			}
 			resizeTextArea2( 'excludeKeys' );
 		}
@@ -158,13 +158,13 @@ function addEntry()
 // Enable / disable OS selection drop down
 function enableOS()
 {
-	if ( document.querySelector( '.osMode' ).value === 'None' )
+	if ( qs( '.osMode' ).value === 'None' )
 	{
-		document.querySelector( '.osName' ).parentNode.classList.add( 'd-none' );
+		qs( '.osName' ).parentNode.classList.add( 'd-none' );
 	}
 	else
 	{
-		document.querySelector( '.osName' ).parentNode.classList.remove( 'd-none' );
+		qs( '.osName' ).parentNode.classList.remove( 'd-none' );
 	}
 }
 
@@ -184,9 +184,9 @@ for ( e of document.querySelectorAll( 'textarea' ) )
 }
 function resizeTextArea2( cls )
 {
-	document.querySelector( '.' + cls ).style.height = 'auto';
-	let newHeight = document.querySelector( '.' + cls ).scrollHeight + 2;
-	document.querySelector( '.' + cls ).style.height = newHeight + 'px';
+	qs( '.' + cls ).style.height = 'auto';
+	let newHeight = qs( '.' + cls ).scrollHeight + 2;
+	qs( '.' + cls ).style.height = newHeight + 'px';
 }
 
 // A function to create final entry
@@ -195,25 +195,25 @@ function createEntry()
 	let finalText = '';
 
 	// Get Entry Name
-	if ( document.querySelector( '.entryName' ).value === '' )
+	if ( qs( '.entryName' ).value === '' )
 	{
 		alert( 'Please provide the name of the software.' );
-		document.querySelector( '.entryName' ).focus();
+		qs( '.entryName' ).focus();
 		return;
 	}
 	else
 	{
-		finalText += '[' + document.querySelector( '.entryName' ).value;
-		if ( document.querySelector( '.entryType' ).value !== 'General' )
+		finalText += '[' + qs( '.entryName' ).value;
+		if ( qs( '.entryType' ).value !== 'General' )
 		{
-			finalText += ' ' + document.querySelector( '.entryType' ).value;
+			finalText += ' ' + qs( '.entryType' ).value;
 		}
 		finalText += ' *]';
 	}
 
 	// Get OS Selection
-	let osmode = document.querySelector( '.osMode' ).value;
-	let osname = document.querySelector( '.osName' ).value;
+	let osmode = qs( '.osMode' ).value;
+	let osname = qs( '.osName' ).value;
 
 	if ( osmode === 'Strict OS Version' )
 	{
@@ -229,34 +229,34 @@ function createEntry()
 	}
 
 	// Get Section Name
-	let sectionName = document.querySelector( '.section' ).value;
+	let sectionName = qs( '.section' ).value;
 	if ( sectionName !== 'None' )
 	{
 		if ( sectionName === 'Games' || sectionName === 'Language Files' || sectionName.startsWith( 'Dangerous ' ) )
 		{
-			finalText += '\nSection=' + document.querySelector( '.section' ).value;
+			finalText += '\nSection=' + qs( '.section' ).value;
 		}
 		else
 		{
-			finalText += '\nLangSecRef=' + document.querySelector( '.section' ).value;
+			finalText += '\nLangSecRef=' + qs( '.section' ).value;
 		}
 	}
 
 	// Show error if both 'Registry Keys to Detect' &
 	// 'Files / Folders to Detect' are empty
-	if ( document.querySelector( '.fileFolderDetect' ).value === '' && document.querySelector( '.registryDetect' ).value === '' )
+	if ( qs( '.fileFolderDetect' ).value === '' && qs( '.registryDetect' ).value === '' )
 	{
 		alert( "Please provide at least one of 'Files / Folders to Detect' "
 				+ "and 'Registry Keys to Detect'." );
-		document.querySelector( '.fileFolderDetect' ).focus();
+		qs( '.fileFolderDetect' ).focus();
 		return;
 	}
 
 	// Get Registry Entry Detection
-	if ( document.querySelector( '.registryDetect' ).value !== '' )
+	if ( qs( '.registryDetect' ).value !== '' )
 	{
 		// See if detect is multi-line
-		let regDetectParts = document.querySelector( '.registryDetect' ).value.split( '\n' );
+		let regDetectParts = qs( '.registryDetect' ).value.split( '\n' );
 		if ( regDetectParts.length > 1 )
 		{
 			regDetectParts.sort();
@@ -274,10 +274,10 @@ function createEntry()
 	}
 
 	// File / Folder Detection
-	if ( document.querySelector( '.fileFolderDetect' ).value !== '' )
+	if ( qs( '.fileFolderDetect' ).value !== '' )
 	{
 		// See if DetectFile is multi-line
-		let fileFolderDetectParts = document.querySelector( '.fileFolderDetect' ).value.split( '\n' );
+		let fileFolderDetectParts = qs( '.fileFolderDetect' ).value.split( '\n' );
 		if ( fileFolderDetectParts.length > 1 )
 		{
 			fileFolderDetectParts.sort();
@@ -295,25 +295,25 @@ function createEntry()
 	}
 
 	// Get Warning Message
-	if ( document.querySelector( '.warning' ).value !== '' )
+	if ( qs( '.warning' ).value !== '' )
 	{
-		finalText += '\nWarning=' + document.querySelector( '.warning' ).value;
+		finalText += '\nWarning=' + qs( '.warning' ).value;
 	}
 
 	// Show error if both 'Files / Folders to Remove' &
 	// 'Registry Keys to Remove' are empty
-	if ( document.querySelector( '.fileFolderRemovals' ).value === '' && document.querySelector( '.registryKeyRemovals' ).value === '' )
+	if ( qs( '.fileFolderRemovals' ).value === '' && qs( '.registryKeyRemovals' ).value === '' )
 	{
 		alert( "Please provide at least one of 'Files / Folders to Remove' "
 				+ "and 'Registry Keys to Remove'." );
-		document.querySelector( '.fileFolderRemovals' ).focus();
+		qs( '.fileFolderRemovals' ).focus();
 		return;
 	}
 
 	// File / Folder for Removal
-	if ( document.querySelector( '.fileFolderRemovals' ).value !== '' )
+	if ( qs( '.fileFolderRemovals' ).value !== '' )
 	{
-		let fileFolderRemovalsParts = document.querySelector( '.fileFolderRemovals' ).value.split( '\n' );
+		let fileFolderRemovalsParts = qs( '.fileFolderRemovals' ).value.split( '\n' );
 		fileFolderRemovalsParts.sort();
 		for( i in fileFolderRemovalsParts )
 		{
@@ -324,9 +324,9 @@ function createEntry()
 	}
 
 	// Registry Keys for Removal
-	if ( document.querySelector( '.registryKeyRemovals' ).value !== '' )
+	if ( qs( '.registryKeyRemovals' ).value !== '' )
 	{
-		let registryKeyRemovalsParts = document.querySelector( '.registryKeyRemovals' ).value.split( '\n' );
+		let registryKeyRemovalsParts = qs( '.registryKeyRemovals' ).value.split( '\n' );
 		registryKeyRemovalsParts.sort();
 		for( i in registryKeyRemovalsParts )
 		{
@@ -337,9 +337,9 @@ function createEntry()
 	}
 
 	// Exclude Keys for Removal
-	if ( document.querySelector( '.excludeKeys' ).value !== '' )
+	if ( qs( '.excludeKeys' ).value !== '' )
 	{
-		let excludeKeysParts = document.querySelector( '.excludeKeys' ).value.split( '\n' );
+		let excludeKeysParts = qs( '.excludeKeys' ).value.split( '\n' );
 		excludeKeysParts.sort();
 		for( i in excludeKeysParts )
 		{
@@ -356,7 +356,7 @@ function createEntry()
 				if ( excludeKeysParts[ i ].charAt( pos - 1 ) !== '\\' )
 				{
 					alert( "Every 'Exclude Keys' requires '\\' at the end of the path." );
-					document.querySelector( '.excludeKeys' ).focus();
+					qs( '.excludeKeys' ).focus();
 					return;
 				}
 				finalText += '=' + replaceEnvVar ( excludeKeysParts[ i ] );
@@ -368,7 +368,7 @@ function createEntry()
 				if ( excludeKeysParts[ i ].charAt( pos - 1 ) !== '\\' )
 				{
 					alert( "Every 'Exclude Keys' requires '\\' at the end of the path." );
-					document.querySelector( '.excludeKeys' ).focus();
+					qs( '.excludeKeys' ).focus();
 					return;
 				}
 				finalText += '=' + replaceEnvVar ( excludeKeysParts[ i ] );
@@ -376,21 +376,21 @@ function createEntry()
 			else
 			{
 				alert( "Every 'Exclude Keys' must start with 'FILE|' or 'PATH|' or 'REG|'." );
-				document.querySelector( '.excludeKeys' ).focus();
+				qs( '.excludeKeys' ).focus();
 				return;
 			}
 		}
 	}
 
 	// Add the final entry to final entry text box
-	document.querySelector( '.finalEntry' ).innerHTML = finalText;
+	qs( '.finalEntry' ).innerHTML = finalText;
 
 	// Enlarge final entry text box
 	resizeTextArea2( 'finalEntry' );
 
 	// Visual feedback for 'Create Entry' button
-	document.querySelector( '.createButton' ).innerText = '🎉 Created!';
-	setTimeout( function(){ document.querySelector( '.createButton' ).innerText = 'Create Entry'; }, 3000 );
+	qs( '.createButton' ).innerText = '🎉 Created!';
+	setTimeout( function(){ qs( '.createButton' ).innerText = 'Create Entry'; }, 3000 );
 }
 // createEntry() ends
 
@@ -471,7 +471,7 @@ function replaceEnvVar( txt )
 // Copy entry to clipboard
 function copy2Clipboard()
 {
-	navigator.clipboard.writeText( document.querySelector( '.finalEntry' ).value );
-	document.querySelector( '.copyButton' ).innerText = '✔️ Copied!';
-	setTimeout( function(){ document.querySelector( '.copyButton' ).innerText = 'Copy'; }, 3000 );
+	navigator.clipboard.writeText( qs( '.finalEntry' ).value );
+	qs( '.copyButton' ).innerText = '✔️ Copied!';
+	setTimeout( function(){ qs( '.copyButton' ).innerText = 'Copy'; }, 3000 );
 }
