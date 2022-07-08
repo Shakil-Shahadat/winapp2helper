@@ -2,3 +2,7 @@ legend
 {
 	font-style: italic;
 }
+textarea
+{
+	overflow: hidden;
+}
